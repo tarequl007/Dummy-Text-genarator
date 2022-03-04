@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="images/">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Dummy Text Genarator</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="text-center mt-4">Dummy Text Genarator</h2>
+        <div class="row mt-5 ">
+            <div class="col-xl-6 text-center">
+                <form class="form-inline" id="form">
+                    <input type="number" id="amount">
+                    <button class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+            <!-- Result Area -->
+
+            <div class="col-xl-6">
+                <article id="result"></article>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Main JS -->
+
+    <script>
+        const dummyText = ['Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', 'Consectetur adipisicing elit. Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', 'Ipsum dolor sit amet consectetur adipisicing elit. Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', 'Sit amet consectetur adipisicing elit. Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque. Sed provident ducimus unde tenetur?', 'Amet consectetur adipisicing elit. Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', 'Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', 'Obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', ' Elit  Tempore obcaecati ad doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?', 'Doloribus maxime veniam libero neque commodi repellendus dolorum ut cumque, dolor repellat explicabo fugiat? Sed provident ducimus unde tenetur?']
+            // Selecting elements
+        const form = document.getElementById('form');
+        const amount = document.getElementById('amount');
+        const result = document.getElementById('result');
+
+        // Event Listner
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const value = Number(amount.value);
+            // const value = parseInt(amount.value)
+
+            // Take Random number 
+
+            // Convert random to floor Number
+
+            const random = Math.floor(Math.random() * dummyText.length)
+
+
+            // for empty,nagative,or greter then 9 case
+
+            if (isNaN(value) || value <= 0 || value > 9) {
+                result.innerHTML = `<p>${dummyText[random]}</p>` // Use template letarature.
+            } else { // When some One give value 1-9
+
+                const sliceArray = dummyText.slice(0, value);
+
+                const finalArray = sliceArray.map(function(singleDummy) {
+                    return `<p>${singleDummy}</p>`;
+                })
+
+                result.innerHTML = finalArray;
+
+
+
+
+            }
+
+
+
+        })
+    </script>
+
+
+</body>
+
+</html>
